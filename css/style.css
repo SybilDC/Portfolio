@@ -1,0 +1,78 @@
+/*
+Website: 90 viewport width, gecentreerd (!)
+
+Relatieve meeteenheden: vw / vh of %
+Absolute meeteenheden: rem (!) geen pixels!
+
+Secties: Tussen elke sectie 5vh margin onderaan
+
+Paragrafen en links: Lato sans, regular, 1.8rem, 1.5 lineheight
+Titels: federo-regular, regular
+h1: 5.5rem
+h2: 4rem
+h3: 2.5rem
+Logo: 2.5rem
+
+Colors: 
+Groen: #3e5622
+wit: #ffffff
+*/
+
+/* Schrijf je CSS hieronder */
+body{
+    color: #AD2F92;
+}
+header{
+    width: 93vw;
+    margin: auto;
+    font-family:"Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+nav a{
+    color: #AD2F92;
+}
+a{
+    text-decoration: none;
+    padding: 0vh 3vw;
+}
+h1{
+        font-family: "Delius Swash Caps", cursive;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 3rem;
+        margin-bottom: 1vh;
+      
+}
+p{
+      font-family: "Source Code Pro", monospace;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1,5rem;
+    }
+.navigation{
+    margin-top: 5vh;
+    margin-bottom: 30px;
+    background-color: #F5E4EE;
+    border-radius: 25px;
+    text-align: center;
+    width: 92vw;
+    padding: 15px;
+    font-size: 2rem;
+}
+#hero {
+    background-color: #F5E4EE;
+    height: 370px;
+    
+}
+#hero h1{
+    margin-top: -300px;
+    margin-left: 220px;
+}   
+#hero p{
+    margin-left: 220px;
+} 
+ #hero img{
+    width: 200px;
+ }

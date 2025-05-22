@@ -1,24 +1,3 @@
-/*
-Website: 90 viewport width, gecentreerd (!)
-
-Relatieve meeteenheden: vw / vh of %
-Absolute meeteenheden: rem (!) geen pixels!
-
-Secties: Tussen elke sectie 5vh margin onderaan
-
-Paragrafen en links: Lato sans, regular, 1.8rem, 1.5 lineheight
-Titels: federo-regular, regular
-h1: 5.5rem
-h2: 4rem
-h3: 2.5rem
-Logo: 2.5rem
-
-Colors: 
-Groen: #3e5622
-wit: #ffffff
-*/
-
-/* Schrijf je CSS hieronder */
 body{
     color: #AD2F92;
 }
@@ -64,15 +43,59 @@ p{
 #hero {
     background-color: #F5E4EE;
     height: 370px;
+    margin-top: -110px;
     
 }
 #hero h1{
     margin-top: -300px;
     margin-left: 220px;
+    margin-right: 20px;
 }   
 #hero p{
     margin-left: 220px;
+    margin-right: 20px;
 } 
  #hero img{
     width: 200px;
  }
+#pijl{
+   width: 125px;
+   margin-left: 155px;
+   margin-top: 20px;
+   rotate: 20deg;
+   
+}
+.stuk{
+    width: 20vw; 
+}
+
+.puzzel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* ruimte tussen de puzzelstukken */
+    padding: 40px;
+  }
+  
+  .stuk {
+    position: relative;
+    width: 200px;  /* pas dit aan naar de grootte van jouw puzzelstuk */
+    height: 200px; /* idem */
+  }
+  
+  .stuk img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .stuk video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%; /* kleiner dan het puzzelstuk */
+    height: auto;
+    pointer-events: none; /* video kan niet aangeklikt worden */
+    z-index: 1;
+  }

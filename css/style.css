@@ -244,6 +244,9 @@ font-family: "Delius Swash Caps", cursive;
   margin-bottom: 1vh;
   text-align: center;
 }
+#portfolio p{
+  margin-left: -10px;
+}
 #hero_mijn_werk img{
   height: 350px;
 }

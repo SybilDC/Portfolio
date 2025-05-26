@@ -144,7 +144,9 @@ h2 {
 .spacer {
   height: 30vh;
 }
-
+.spacer-bottom {
+  height: 50vh;
+}
 .row {
   display: flex;
   justify-content: center;

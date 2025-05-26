@@ -11,7 +11,7 @@ header {
 nav a {
   color: #ad2f92;
 }
-a {
+a {color: #ad2f92;
   text-decoration: none;
   padding: 0vh 3vw;
 }
@@ -126,12 +126,21 @@ h2 {
 }
 
 #portfolio img {
-  width: 200px;
+  width: 250px;
   height: auto;
   display: block;
   object-fit: cover;
   border-radius: 20px;
   margin-top: 10px;
+  margin-left: 15vw;
+}
+#portfolio p {
+  width: 250px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 75px;
   margin-left: 15vw;
 }
 #hero_over_mij {
@@ -145,7 +154,7 @@ h2 {
   height: 30vh;
 }
 .spacer-bottom {
-  height: 50vh;
+  height: 35vh;
 }
 .row {
   display: flex;
@@ -239,6 +248,8 @@ font-family: "Delius Swash Caps", cursive;
   height: 350px;
 }
 @media screen and (min-width: 1024px) {
+  body{  overflow-x: hidden;
+}
   .spacer {
     height: 30vh;
   }
@@ -260,12 +271,12 @@ font-family: "Delius Swash Caps", cursive;
   .box img,
   .box2 img,
   .box3 img {
-    width: 200%;
+    width: 150%;
   }
   .box video,
   .box2 video,
   .box3 video {
-    width: 90%;
+    width: 40%;
   }
   .box {
     transform: translateY(0) translateX(-300px);

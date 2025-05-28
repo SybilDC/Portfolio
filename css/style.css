@@ -23,7 +23,8 @@ h1 {
   margin-bottom: 1vh;
 }
 p {
-  font-family: "Source Code Pro", monospace;
+  
+  font-family: "Source Sans 3", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio – Motion Designer & Creative Designer</title>
+  <meta name="description" content="Portfolio van een Motion Designer & Creative Designer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#home">Skip to content</a>
+
+  <!-- Hand-getekende decoraties (hergebruikt met <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="d-star" viewBox="0 0 40 40"><path d="M20 4 L24 15 L36 16 L27 24 L30 36 L20 29 L10 36 L13 24 L4 16 L16 15 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="d-heart" viewBox="0 0 40 40"><path d="M20 34 C6 24 5 13 12 10 C16 8.500 19 11 20 14 C21 11 24 8.500 28 10 C35 13 34 24 20 34 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="d-arrow" viewBox="0 0 90 50"><path d="M4 38 C24 6 54 6 80 30 M80 30 L66 28 M80 30 L76 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="d-squiggle" viewBox="0 0 120 24"><path d="M4 12 C14 2 22 2 30 12 S46 22 56 12 S72 2 82 12 S98 22 116 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="d-spark" viewBox="0 0 40 40"><path d="M20 3 V14 M20 26 V37 M3 20 H14 M26 20 H37" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <!-- NAVIGATIE -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#home" data-nav="home"><span id="brand-name">Portfolio</span></a>
+      <nav class="nav__links" id="nav-links" aria-label="Hoofdmenu" data-i18n-aria="nav.label">
+        <a href="#home"    data-nav="home"    data-i18n="nav.home">Home</a>
+        <a href="#work"    data-nav="work"    data-i18n="nav.work">Mijn werk</a>
+        <a href="#about"   data-nav="about"   data-i18n="nav.about">Over mij</a>
+        <a href="#skills"  data-nav="skills"  data-i18n="nav.skills">Mijn skills</a>
+        <a href="#contact" data-nav="contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Taal" data-i18n-aria="nav.langLabel">
+        <button type="button" class="lang__btn is-active" data-lang="nl" aria-pressed="true">NL</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" class="lang__btn" data-lang="fr" aria-pressed="false">FR</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav-links" data-i18n-aria="nav.menu" aria-label="Menu openen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HOOFDPAGINA (alle secties onder elkaar) -->
+  <main id="view-home">
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <svg class="doodle d-star  hero__d1" aria-hidden="true"><use href="#d-star"/></svg>
+      <svg class="doodle d-heart hero__d2" aria-hidden="true"><use href="#d-heart"/></svg>
+      <svg class="doodle d-spark hero__d3" aria-hidden="true"><use href="#d-spark"/></svg>
+
+      <div class="hero__text">
+        <h1><span data-i18n="hero.hi">Ik ben</span> <span class="hero__name" id="hero-name">…</span></h1>
+        <p class="hero__role" data-i18n="hero.role">Motion Designer & Creative Designer</p>
+        <p data-i18n="hero.p1"></p>
+        <p data-i18n="hero.p2"></p>
+        <p data-i18n="hero.p3"></p>
+        <a class="btn" href="#work" data-nav="work" data-i18n="hero.cta">Ontdek mijn werk</a>
+      </div>
+
+      <div class="hero__stage">
+        <div class="char-stage" id="char-stage">
+          <!-- De animatie speelt in een loop. Eerst het stilstaande beeld, zodat je nooit een leeg/zwart vlak ziet -->
+          <img class="char-stage__still" id="char-still" src="assets/character/01_character_welcome_first.png" alt="" width="1680" height="944">
+          <video id="welcome" class="char-stage__video" muted playsinline autoplay loop preload="auto" aria-hidden="true">
+            <source src="assets/character/01_character_welcome_Transparant.webm" type="video/webm">
+          </video>
+          <video id="bubble-video" class="char-stage__video" muted playsinline loop preload="auto" aria-hidden="true">
+            <source src="assets/character/tekstballon.webm" type="video/webm">
+          </video>
+          <p class="bubble-text" id="bubble-text" data-i18n="hero.bubble">Welkom in mijn creatieve wereld!</p>
+        </div>
+        <p class="scribble hero__scribble"><span data-i18n="hero.scribble">scroll even door!</span>
+          <svg class="doodle d-arrow" aria-hidden="true"><use href="#d-arrow"/></svg></p>
+      </div>
+    </section>
+
+    <!-- MY WORK -->
+    <section class="work" id="work">
+      <svg class="doodle d-squiggle work__d1" aria-hidden="true"><use href="#d-squiggle"/></svg>
+      <svg class="doodle d-star work__d2" aria-hidden="true"><use href="#d-star"/></svg>
+      <h2 class="work__titleimg">
+        <img src="assets/character/07_character_front_my_work_pose_5.png" alt="My Work" data-i18n-alt="work.alt" width="1761" height="733">
+      </h2>
+      <div class="work__layout">
+        <img class="work__char" src="assets/character/04_character_front_pose03.png" alt="" loading="lazy" width="646" height="1517">
+        <div class="work__grid" id="work-grid"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section class="about" id="about">
+      <svg class="doodle d-heart about__d1" aria-hidden="true"><use href="#d-heart"/></svg>
+      <h2 class="section-title" data-i18n="about.title">Over mij</h2>
+      <div class="about__top">
+        <figure class="about__photo">
+          <div class="about__frame">
+            <img src="assets/about/Foto mezelf_2d character.jpg" alt="Foto van mezelf met mijn 2D-personage" data-i18n-alt="about.photoAlt" loading="lazy">
+          </div>
+          <svg class="doodle d-star about__d2" aria-hidden="true"><use href="#d-star"/></svg>
+          <svg class="doodle d-spark about__d3" aria-hidden="true"><use href="#d-spark"/></svg>
+        </figure>
+        <div class="about__intro">
+          <h3 data-i18n="about.h1">Een beetje over mij</h3>
+          <div class="prose" data-i18n-list="about.t1"></div>
+        </div>
+      </div>
+      <div class="about__cols">
+        <div><h3 data-i18n="about.h2">What I love to create</h3><div class="prose" data-i18n-list="about.t2"></div></div>
+        <div><h3 data-i18n="about.h3">Outside the screen</h3><div class="prose" data-i18n-list="about.t3"></div></div>
+      </div>
+    </section>
+
+    <!-- MY SKILLS -->
+    <section class="skills" id="skills">
+      <svg class="doodle d-spark skills__d1" aria-hidden="true"><use href="#d-spark"/></svg>
+      <h2 class="section-title" data-i18n="skills.title">Mijn skills</h2>
+      <ul class="skills__list" id="skills-list"></ul>
+      <div class="skills__stage">
+        <svg class="doodle d-arrow skills__arrow" aria-hidden="true"><use href="#d-arrow"/></svg>
+        <img class="skills__char" src="assets/character/04_character_front_pose03.png" alt="Het personage wijst naar de software die ik gebruik" data-i18n-alt="skills.alt" loading="lazy" width="646" height="1517">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <svg class="doodle d-heart contact__d1" aria-hidden="true"><use href="#d-heart"/></svg>
+      <svg class="doodle d-star contact__d2" aria-hidden="true"><use href="#d-star"/></svg>
+      <div class="contact__inner">
+        <img class="contact__char" src="assets/character/08_character_contact.png" alt="Het personage houdt een brief vast" data-i18n-alt="contact.alt" loading="lazy" width="554" height="1517">
+        <div class="contact__text">
+          <h2 data-i18n="contact.h">Zin om kennis te maken?</h2>
+          <p data-i18n="contact.p"></p>
+          <p class="contact__mail"><strong data-i18n="contact.mail">E-mail:</strong> <a id="mail-link" href="mailto:">[SybilDeconinck@gmail.com]</a></p>
+          <p class="scribble contact__bye" data-i18n="contact.bye">Tot snel!</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer"><span class="scribble" data-i18n="footer.text"></span></footer>
+  </main>
+
+  <!-- CATEGORIE- EN PROJECTPAGINA’S (wordt door main.js ingevuld) -->
+  <main id="view-page" class="page" hidden tabindex="-1"></main>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

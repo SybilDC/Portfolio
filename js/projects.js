@@ -189,7 +189,7 @@
              "Ik wilde mezelf eens als Funko Pop zien, dus maakte ik mijn eigen 3D-versie. Ik modelleerde verschillende onderdelen zelf en gebr"],
         en: ["My Own Funko Pop",
              "I wanted to see myself as a Funko Pop, so I created my own 3D version. I modelled several parts myself and used a few existing models to complete the look. Then I had the figure 3D-printed."] },
-      media: [ img("personal-projects", "05_Funko.png", null, "center") /* 05_Funko_360.mov ontbreekt: zie README */ ] },
+      media: [ img("personal-projects", "05_Funko.png",), img         ("personal-projects", "funko_print_01.png"), img("personal-projects", "funko_print_02.png"), img("personal-projects", "funko_print_03.png"), img("personal-projects", "funko_print_04.png") ] },
 
     { id: "cricut", cat: "personal", title: "Cricut Creations", hidden: true,
       /* Wordt zichtbaar zodra je foto’s toevoegt: zet hidden op false en vul thumb + media in */

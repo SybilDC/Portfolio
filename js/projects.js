@@ -9,6 +9,12 @@
   const vid = (cat, name, label) => ({ type: "video", src: `${A}${cat}/${name}.mp4`, poster: `${A}${cat}/${name}.jpg`, label });
   const img = (cat, file, label, pos) => ({ type: "image", src: `${A}${cat}/${file}`, label, pos });
 
+  // Blader-boekje (bv. een brandbook): foto's van de pagina's in assets/projects/<cat>/<map>/pagina-01.jpg, pagina-02.jpg, ...
+  const book = (cat, folder, count, pdf, label) => ({
+    type: "book", label, pdf: `${A}${cat}/${folder}/${pdf}`,
+    pages: Array.from({ length: count }, (_, i) => `${A}${cat}/${folder}/pagina-${String(i + 1).padStart(2, "0")}.jpg`)
+  });
+
   const categories = [
     { id: "2d-motion", title: { nl: "2D & Motion", en: "2D & Motion" },
       intro: { nl: "Karakteranimatie, lipsync, parallax en meer, vooral gemaakt in Illustrator en After Effects.",
@@ -168,7 +174,8 @@
         en: ["Serena Smoothie Branding",
              "For this branding project, I created Serena, a smoothie concept featuring adaptogens as ingredients. I developed the visual identity, logo and packaging for a 330 ml can. I also created a short logo animation."] },
       media: [ img("branding", "02_can_Serena.jpg"), img("branding", "02_Can\u0027s_Serena.jpg"),
-               vid("branding", "02_LogoAnimatie_Serena", { nl: "Logo-animatie", en: "Logo animation" }) ] },
+               vid("branding", "02_LogoAnimatie_Serena", { nl: "Logo-animatie", en: "Logo animation" }),
+               book("branding", "serena-brandbook", 20, "serena-brandbook.pdf", { nl: "Brandbook", en: "Brandbook", fr: "Brandbook" }) ] },
 
     { id: "carla", cat: "branding", title: "Carla – Logo Design",
       thumb: { src: `${A}branding/03_LogoCala_MockUp_1.jpg` },
@@ -178,7 +185,13 @@
              "Carla wilde een persoonlijke stempel met haar eigen naam om haar keramiekwerken te kunnen markeren. Ik werkte verschillende logo-ideeën uit en maakte mock-ups om te tonen hoe het ontwerp als stempel op haar keramiek zou staan."],
         en: ["Carla Logo Design",
              "Carla wanted a personalised stamp featuring her own name to mark her ceramic pieces. I explored different logo concepts and created mock-ups to show how the design would look as a stamp on her ceramics."] },
-      media: [ img("branding", "03_Logo_Carla.jpg"), img("branding", "03_LogoCala_MockUp_1.jpg"), img("branding", "03LogoCala_MockUp_2.jpg") ] },
+      media: [ img("branding", "03_Logo_Carla.jpg"), img("branding", "03_LogoCala_MockUp_1.jpg"), img("branding", "03LogoCala_MockUp_2.jpg") ],
+      // Extra rubriek met een eigen titel (onder "Meer van dit project"): logo-ideeën die Carla niet koos
+      sections: [ {
+        title: { nl: "Logo-ideeën", en: "Logo ideas", fr: "Idées de logo" },
+        intro: { nl: "Ideeën die ik uitwerkte, maar waar Carla niet voor koos.", en: "Ideas I developed that Carla did not choose.", fr: "Des idées que j’ai développées mais que Carla n’a pas choisies." },
+        media: [ img("branding", "logo_initialen_01.jpg"), img("branding", "logo_initialen_02.jpg"), img("branding", "logo_vaas.jpg") ]
+      } ] },
 
     /* ---------------- PERSONAL PROJECTS ---------------- */
     { id: "funko-pop", cat: "personal", title: "My Funko Pop",
@@ -189,7 +202,7 @@
              "Ik wilde mezelf eens als Funko Pop zien, dus maakte ik mijn eigen 3D-versie. Ik modelleerde verschillende onderdelen zelf en gebr"],
         en: ["My Own Funko Pop",
              "I wanted to see myself as a Funko Pop, so I created my own 3D version. I modelled several parts myself and used a few existing models to complete the look. Then I had the figure 3D-printed."] },
-      media: [ img("personal-projects", "05_Funko.png",), img         ("personal-projects", "funko_print_01.png"), img("personal-projects", "funko_print_02.png"), img("personal-projects", "funko_print_03.png"), img("personal-projects", "funko_print_04.png") ] },
+      media: [img("personal-projects", "05_Funko.png"),{ ...vid("personal-projects", "funko_360"), loop: true }, img("personal-projects", "funko_print_01.png"), img("personal-projects", "funko_print_02.png"), img("personal-projects", "funko_print_03.png"), img("personal-projects", "funko_print_04.png") ] },
 
     { id: "cricut", cat: "personal", title: "Cricut Creations", hidden: true,
       /* Wordt zichtbaar zodra je foto’s toevoegt: zet hidden op false en vul thumb + media in */

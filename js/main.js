@@ -86,11 +86,55 @@
   /* =========================================================
      4. CATEGORIE- EN PROJECTPAGINA’S (hash-routing)
      ========================================================= */
+  function bookHTML(m) {
+    const n = m.pages.length, label = m.label ? tx(m.label) : "Brandbook";
+    return `<figure class="media media--wide book" tabindex="0" aria-roledescription="carousel" aria-label="${esc(label)}" data-pages="${esc(JSON.stringify(m.pages.map(enc)))}">
+      <div class="book__stage">
+        <button type="button" class="book__nav book__nav--prev" data-book="prev" aria-label="${esc(t("book.prev"))}"><span aria-hidden="true">‹</span></button>
+        <img class="book__page" src="${enc(m.pages[0])}" alt="${esc(label)} – ${esc(t("book.page"))} 1" decoding="async">
+        <button type="button" class="book__nav book__nav--next" data-book="next" aria-label="${esc(t("book.next"))}"><span aria-hidden="true">›</span></button>
+      </div>
+      <div class="book__bar">
+        <span class="book__count" aria-live="polite">${esc(t("book.page"))} <b data-book-cur>1</b> / ${n}</span>
+        ${m.pdf ? `<a class="book__pdf" href="${enc(m.pdf)}" target="_blank" rel="noopener" download>${esc(t("book.pdf"))}</a>` : ""}
+      </div>
+      <figcaption>${esc(label)}</figcaption>
+    </figure>`;
+  }
+  // Maakt alle blader-boekjes op de pagina werkend: knoppen, pijltjestoetsen en vegen op mobiel
+  function initBooks() {
+    $$(".book", pageView).forEach((book) => {
+      const pages = JSON.parse(book.dataset.pages), img = $(".book__page", book), cur = $("[data-book-cur]", book);
+      const prev = $("[data-book=prev]", book), next = $("[data-book=next]", book);
+      let i = 0, x0 = null;
+      const go = (n) => {
+        i = Math.max(0, Math.min(pages.length - 1, n));
+        img.src = pages[i]; img.alt = img.alt.replace(/\d+$/, i + 1); cur.textContent = i + 1;
+        prev.disabled = i === 0; next.disabled = i === pages.length - 1;
+        [pages[i + 1], pages[i - 1]].forEach((s) => { if (s) new Image().src = s; });     // volgende/vorige alvast laden
+      };
+      prev.addEventListener("click", () => go(i - 1));
+      next.addEventListener("click", () => go(i + 1));
+      book.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") go(i - 1); if (e.key === "ArrowRight") go(i + 1); });
+      book.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+      book.addEventListener("touchend", (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1)); x0 = null; });
+      go(0);
+    });
+  }
   function mediaHTML(m, i, title) {
+    if (m.type === "book") return bookHTML(m);
     const label = m.label ? `<figcaption>${esc(tx(m.label))}</figcaption>` : "";
     if (m.type === "video") {
-      return `<figure class="media media--video"><video controls playsinline preload="metadata" poster="${enc(m.poster)}" onerror="this.closest('figure').remove()">
-        <source src="${enc(m.src)}" type="video/mp4">${esc(t("proj.noVideo"))}</video>${label}</figure>`;
+      return `<figure class="media media--video"><video
+    controls
+    loop
+    playsinline
+    preload="auto"
+    poster="${enc(m.poster)}"
+    onerror="this.closest('figure').remove()">
+    <source src="${enc(m.src)}" type="video/mp4">
+    ${esc(t("proj.noVideo"))}
+  </video>${label}</figure>`;
     }
     return `<figure class="media"><img src="${enc(m.src)}" alt="${esc(title)}${m.label ? " – " + esc(tx(m.label)) : ""}" loading="${i ? "lazy" : "eager"}" decoding="async" onerror="this.closest('figure').remove()">${label}</figure>`;
   }
@@ -129,6 +173,7 @@
         ${meta ? `<aside class="proj__meta">${meta}</aside>` : ""}
       </div>
       ${rest.length ? `<h2 class="proj__more">${esc(t("proj.more"))}</h2><div class="proj__extra">${rest.map((m, i) => mediaHTML(m, i + 1, p.title)).join("")}</div>` : ""}
+      ${(p.sections || []).map((s) => `<h2 class="proj__more">${esc(tx(s.title))}</h2>${s.intro ? `<p class="proj__sectionintro">${esc(tx(s.intro))}</p>` : ""}<div class="proj__extra proj__extra--ideas">${s.media.map((m, i) => mediaHTML(m, i + 1, p.title)).join("")}</div>`).join("")}
       <nav class="pager">
         ${prev ? `<a href="#/work/${cat.id}/${prev.id}">← ${esc(t("proj.prev"))}: ${esc(prev.title)}</a>` : "<span></span>"}
         ${next ? `<a href="#/work/${cat.id}/${next.id}">${esc(t("proj.next"))}: ${esc(next.title)} →</a>` : ""}
@@ -137,14 +182,30 @@
   }
 
   const homeView = $("#view-home"), pageView = $("#view-page");
-  function showHome() { homeView.hidden = false; pageView.hidden = true; }
+  // Stopt alle video's van de categorie-/projectpagina (ook het geluid) en maakt de pagina leeg
+  function stopPageVideos() {
+    $$("video", pageView).forEach((v) => { v.pause(); v.removeAttribute("src"); $$("source", v).forEach((s) => s.remove()); v.load(); });
+    pageView.innerHTML = "";
+  }
+  function showHome() { stopPageVideos(); homeView.hidden = false; pageView.hidden = true; }
   function showPage(html) {
+    stopPageVideos();
     pageView.innerHTML = html;
-    homeView.hidden = true; pageView.hidden = false;
+
+homeView.hidden = true;
+pageView.hidden = false;
+initBooks();
+
+// De eerste video van de pagina start meteen met geluid; alle video's lopen in een loop
+const vids = $$("video", pageView);
+vids.forEach((v) => v.addEventListener("play", () => vids.forEach((o) => o !== v && o.pause())));   // maximaal één video tegelijk
+if (vids[0]) {
+  vids[0].muted = false;
+  const pr = vids[0].play();
+  if (pr) pr.catch(() => { vids[0].muted = true; vids[0].play().catch(() => {}); });   // blokkeert de browser geluid? dan stil starten
+}
     window.scrollTo(0, 0);
     pageView.classList.remove("page--in"); void pageView.offsetWidth; pageView.classList.add("page--in");
-    $$("video", pageView).forEach((v) => v.addEventListener("play", () => $$("video", pageView).forEach((o) => o !== v && o.pause())));
-    setActive("work");
   }
   function renderRoute() {
     const m = location.hash.match(/^#\/work\/([^/]+)(?:\/([^/]+))?$/);

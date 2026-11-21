@@ -175,9 +175,9 @@
       tools: ["Illustrator", "Photoshop"],
       desc: {
         nl: ["Carla Logo-ontwerp",
-             "Carla heeft haar eigen keramiekzaak en zocht een logo dat ze ook als stempel op haar werk kon gebruiken. Ik werkte verschillende ideeën uit en maakte mock-ups om te tonen hoe het logo op haar keramiek zou staan."],
+             "Carla wilde een persoonlijke stempel met haar eigen naam om haar keramiekwerken te kunnen markeren. Ik werkte verschillende logo-ideeën uit en maakte mock-ups om te tonen hoe het ontwerp als stempel op haar keramiek zou staan."],
         en: ["Carla Logo Design",
-             "Carla has her own ceramics shop and wanted a logo she could also use as a stamp on her work. I explored different ideas and created mock-ups to show how the logo would look on her ceramics."] },
+             "Carla wanted a personalised stamp featuring her own name to mark her ceramic pieces. I explored different logo concepts and created mock-ups to show how the design would look as a stamp on her ceramics."] },
       media: [ img("branding", "03_Logo_Carla.jpg"), img("branding", "03_LogoCala_MockUp_1.jpg"), img("branding", "03LogoCala_MockUp_2.jpg") ] },
 
     /* ---------------- PERSONAL PROJECTS ---------------- */
@@ -268,7 +268,7 @@
         },
       "carla": { desc: [
         "Carla Conception de logo",
-        "Carla possède sa propre boutique de céramique et cherchait un logo qu’elle pourrait également utiliser comme tampon sur ses créations. J’ai développé plusieurs idées et créé des mock-ups pour montrer le rendu du logo sur ses pièces."] },
+        "Carla souhaitait un tampon personnalisé avec son propre nom pour marquer ses créations en céramique. J’ai exploré différentes idées de logos et réalisé des mock-ups pour montrer à quoi ressemblerait le logo sous forme de tampon sur ses céramiques."] },
       "funko-pop": { desc: [
         "Ma propre figurine Funko Pop",
         "Je voulais me voir en version Funko Pop, alors j’ai créé mon propre modèle 3D. J’ai modélisé plusieurs éléments moi-même et utilisé quelques modèles existants pour obtenir le résultat souhaité. J’ai ensuite fait imprimer la figurine en 3D."] },

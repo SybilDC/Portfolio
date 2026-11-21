@@ -182,8 +182,26 @@ a.chip:hover { background: var(--purple); color: #fff; }
 .proj__meta > div { margin-bottom: 1.5rem; }
 .proj__more { font-size: 1.4rem; margin-top: 1rem; }
 .proj__extra { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.proj__sectionintro { margin: -.4rem 0 1rem; color: #555; }
+.proj__extra--ideas { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: 1rem; }
+.proj__extra--ideas .media img { background: #fff; box-shadow: 0 0 0 2px var(--purple-pale); }
 .pager { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 2px dotted var(--purple-light); }
 .pager a { text-decoration: none; font-weight: 500; }
+
+/* Blader-boekje (brandbook) */
+.media--wide { grid-column: 1 / -1; }
+.book:focus-visible { outline-offset: 6px; }
+.book__stage { position: relative; }
+.book .book__page { width: 100%; height: auto; max-height: none; object-fit: contain; background: #fff; border-radius: 20px; display: block; box-shadow: 0 0 0 2px var(--purple-pale); }
+.book__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--purple); color: #fff; font-size: 2rem; line-height: 1; padding: 0 0 .2rem; display: grid; place-items: center; transition: background .2s, opacity .2s; }
+.book__nav:hover:not(:disabled) { background: var(--dark); }
+.book__nav:disabled { opacity: .25; cursor: default; }
+.book__nav--prev { left: -14px; } .book__nav--next { right: -14px; }
+.book__bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: .8rem; flex-wrap: wrap; }
+.book__count { font-weight: 500; color: var(--purple); }
+.book__pdf { font-weight: 500; text-decoration: none; background: var(--purple-pale); color: var(--purple); padding: .3rem 1rem; border-radius: 999px; font-size: .9rem; }
+.book__pdf:hover { background: var(--purple); color: #fff; }
 
 /* 10. RESPONSIVE ------------------------------------------- */
 @media (max-width: 1100px) {
@@ -220,6 +238,7 @@ a.chip:hover { background: var(--purple); color: #fff; }
   .proj__body { grid-template-columns: 1fr; gap: 1rem; }
 }
 @media (max-width: 480px) {
+  .book__nav { width: 42px; height: 42px; font-size: 1.6rem; } .book__nav--prev { left: -6px; } .book__nav--next { right: -6px; }
   .nav__inner { padding: 0 1rem; gap: .5rem; }
   .page, .work, .about, .skills, .contact { padding-left: 1.1rem; padding-right: 1.1rem; }
   .pgrid { grid-template-columns: 1fr; }
